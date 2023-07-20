@@ -1,13 +1,8 @@
-#ifndef Student_H
-#define Student_H
-
-
 #include <iostream>
 #include <stdlib.h>
 #include <iomanip>
 #include <conio.h>
 #include <fstream>
-#include "Course.h"
 #define SPACE 10
 using namespace std;
 
@@ -42,7 +37,7 @@ class Node {		//RED BLACK TREE
 };
 
 
-class Students : public Courses{
+class Students {
 	
 	Node* Root;
 	Node* CN;
@@ -67,25 +62,6 @@ class Students : public Courses{
 	}
 	Node* getRoot(){
 		return Root;
-	}
-	
-	
-	
-	void CalculateBill() {
-		Courses :: UpdateTree();
-		Courses :: DisplayAll();
-		char ch;
-		while(ch != 'n' && ch != 'N') {
-			
-			CourseNode* temp = Courses :: Search();
-			
-			if(temp != NULL) {
-				Total = Total + temp->getCost();
-			}
-			cout<<"Do You want to add More Courses(Y/N):";  cin>>ch;
-		}
-		cout<<"Total Cost:  "<<Total;
-		
 	}
 
 
@@ -485,7 +461,6 @@ class Students : public Courses{
 		if (y_original_color == 0){
 			fixDelete(X);
 		}
-		
 		SaveFile(Root);		UpdateFile();
 	}
 	
@@ -519,7 +494,7 @@ class Students : public Courses{
     		for (int i = SPACE; i < space; i++)     cout << " ";  
     		cout << r->getValue() << "\n";
 			for (int i = SPACE; i < space; i++)     cout << " ";  
-    		cout << r->getName() << "\n"; 
+    		cout << r->getName() << "\n";
     		for (int i = SPACE; i < space; i++) 	cout << " "; 
     		cout << r->getSemester() << "\n";
     		DisplayTree(r->getLeft(), space); 
@@ -545,41 +520,3 @@ class Students : public Courses{
 			DeleteFile();			Root = TNULL;
 		}
 };
-
-#endif
-/*
-int main() {
-	Students C;		char choice;
-	C.UpdateTree();
-	while(1) {
-        cout<<"\n\tXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
-		      "\n\t\t        Main Menu               \n"
-		      "\n\tXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n"
-		      "\t1-> Add STUDENTS\n"
-              "\t2-> Display All STUDENTS\n"
-              "\t3-> Display Tree\n"
-              "\t4-> Search STUDENT\n"
-              "\t5-> Update STUDENT\n"
-              "\t6-> Delete STUDENT\n"
-              "\t7-> Delete All\n"
-              "\t8-> Select Courses\n"
-              "\t9-> Exit\n"
-              "\t\t\t Choice = ";   cin>>choice;  system("cls");
-            switch(choice) {
-                case '1':   C.AddStudents();     						break;
-                case '2':   C.DisplayAll();     						break;
-                case '3':   C.DisplayTree(C.getRoot(), 5);  			break;
-                case '4':   C.Search();   								break;
-                case '5':   C.Update();        							break;
-                case '6':   C.Delete(); 					         	break;
-                case '7':   C.DeleteTree();								break;
-                case '8':   C.CalculateBill();							break;
-                case '9':   exit(0);
-                default:   system("cls");
-            }
-    }
-    
-	return 0;
-}
-*/
-
